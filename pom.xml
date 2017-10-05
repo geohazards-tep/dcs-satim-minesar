@@ -20,7 +20,7 @@
         <community>satim</community>
         <yumRepo>satim</yumRepo>
         <minesarVersion>2.0</minesarVersion>
-        <minesarUrl>https://github.com/skluz/minesar/releases/download/v${minesarVersion}/minesar-bundle-{minesarVersion}.tar.gz</minesarUrl>
+        <minesarUrl>https://github.com/skluz/minesar/releases/download/v${minesarVersion}/minesar-bundle-${minesarVersion}.tar.gz</minesarUrl>
     </properties>
     <scm>
         <connection>scm:git:ssh://git@github.com/geohazards-tep/dcs-satim-minesar</connection>
