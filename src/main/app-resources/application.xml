@@ -1,31 +1,49 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="application">
   <jobTemplates>
-    <jobTemplate id="template_A">
-      <streamingExecutable>/application/node_A/run.sh</streamingExecutable>
-    </jobTemplate>
-    <jobTemplate id="template_B">
-      <streamingExecutable>/application/node_B/run.sh</streamingExecutable>
+    <jobTemplate id="mainJobTemplate">
+      <streamingExecutable>/application/script/run.sh</streamingExecutable>
+      <defaultParameters>
+        <parameter id="slave" maxOccurs="1" title="Sentinel-1 IW slave image" abstract="Define the slave product reference" scope="runtime">https://catalog.terradue.com//sentinel1/search?format=json&amp;uid=S1A_IW_SLC__1SDV_20161212T162631_20161212T162659_014349_0173E7_A307</parameter>
+        <parameter id="iw" title="IW to process" scope="runtime" maxOccurs="1" abstract="IW to process">
+          <options>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>12</option>
+            <option>23</option>
+            <option>123</option>
+            <default>1</default>
+          </options>
+        </parameter>
+        <parameter id="cohesionThreshold" maxOccurs="1" title="cohesion threshold" abstract="Determine areas with interferometric coherence >= threshold. Increasing value of threshold makes reduction of potential areas. Range 0:1" scope="runtime">0.6</parameter>
+        <parameter id="fillEllipseGapLength" maxOccurs="1" title="sill ellipse gap length" abstract="Length of linear structural element [in pixels] to fill gaps in ellipse perimeter." scope="runtime">9</parameter>
+        <parameter id="entrophyThreshold" maxOccurs="1" title="entrophy threshold" abstract="Determine areas with entropy of the interferometric phase calculated in window 9x9 >= threshold. Increasing value of threshold makes reduction of potential areas. Range 0:1" scope="runtime">0.82</parameter>
+        <parameter id="minimalTroughAreaLimit" maxOccurs="1" title="minimal trough limit" abstract="Minimal area of the most inner ellipse created by first full phase change [in pixels]" scope="runtime">50</parameter>
+        <parameter id="maximalTroughAreaLimit" maxOccurs="1" title="maximal trough limit" abstract="Maximal area of the most inner ellipse created by first full phase change [in pixels]" scope="runtime">25000</parameter>
+        <parameter id="maximalTroughRadious" maxOccurs="1" title="maximal trough radious" abstract="Maximal radius [in pixels] of correlation used in verification process" scope="runtime">90</parameter>
+        <parameter id="samplingTroughAngle" maxOccurs="1" title="sampling trough angle" abstract="Step [in degrees] between radiuses used in verification process." scope="runtime">10</parameter>
+        <parameter id="periodOfEllipse" maxOccurs="1" title="period of ellipse" abstract="Period of saw function [in pixels] used in verification process (distance between two points of changing phase from -PI to PI)." scope="runtime">15</parameter>
+        <parameter id="troughMaximumFitError" maxOccurs="1" title="trough maximum fit error" abstract="Determine points with relative similarity to ellipse >= threshold.Increasing value of threshold makes reduction of potential areas. Range 0:1" scope="runtime">0.87</parameter>
+        <parameter id="maximalTroughCutRadious" maxOccurs="1" title="maximal trough cut radious" abstract="Size of the box for cutting the trough from the interferogram" scope="runtime">100</parameter>
+        <parameter id="depthAlertLimit" maxOccurs="1" title="depth alert limit" abstract="The depth of the detected trough which will be marked as an alarm" scope="runtime">1.0</parameter>
+      </defaultParameters>
       <defaultJobconf>
-        <!-- By setting this property with value 1, the node will act as 'aggregator.
-             That is only one instance of the node will run on the cluster -->
-        <property id="ciop.job.max.tasks">1</property>
+      	<!--property id="ciop.job.max.tasks">1</property-->
+        <property id="mapred.task.timeout">9900000000</property>
+        <property id="mapred.map.tasks">1</property>
+        <property id="mapred.map.max.attempts">1</property>
       </defaultJobconf>
     </jobTemplate>
   </jobTemplates>
-    <workflow id="workflow" title="Simple workflow" abstract="Simple workflow based on the DCS Bash archetype">
+  <workflow id="minesarWorkflow" title="MineSAR" abstract="Automatic detection and analysis of ground deformations within large areas based on the results of satellite SAR data processing">
     <workflowVersion>1.0</workflowVersion>
-    <node id="node_A">
-      <job id="template_A"/>
+    <node id="main">
+      <job id="mainJobTemplate" />
       <sources>
-        <source id="source" title="Simple string sources" abstract="List of comma-separated strings" refid="string:list" scope="runtime">input-1,input-2,input-3</source>
+	<source scope="runtime" id="master" maxOccurs="1" title="Sentinel-1 IW master image" abstract="Define the master product reference" refid="string:list">https://catalog.terradue.com//sentinel1/search?format=json&amp;uid=S1A_IW_SLC__1SDV_20161224T162631_20161224T162659_014524_017956_272D</source>
       </sources>
-    </node>
-    <node id="node_B">
-      <job id="template_B"/>
-      <sources>
-        <source refid="wf:node">node_A</source>
-      </sources>
+      <parameters/>
     </node>
   </workflow>
 </application>
