@@ -10,11 +10,11 @@
     <artifactId>dcs-bash-parent</artifactId>
     <version>2.0.0</version>
   </parent>
-  <description>MineSAR description</description>
+  <description>Automatic detection and analysis of ground deformations within large areas based on the results of satellite SAR data processing</description>
   <version>1.0-SNAPSHOT</version>
   <properties>
     <summary>MineSAR summary</summary>
-    <description>MineSAR description</description>
+    <description>Automatic detection and analysis of ground deformations within large areas based on the results of satellite SAR data processing</description>
     <community>satim</community>
     <yumRepo>satim</yumRepo>
   </properties>
@@ -28,10 +28,10 @@
     <profile>
       <id>package-app</id>
       <activation>
-         <property>
-           <name>env</name>
-           <value>ci</value>
-         </property>
+        <property>
+          <name>env</name>
+          <value>ci</value>
+        </property>
       </activation>
       <build>
         <plugins>
