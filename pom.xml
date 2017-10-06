@@ -17,8 +17,8 @@
         <summary>MineSAR summary</summary>
         <description>Automatic detection and analysis of ground deformations within large areas based on the results of satellite SAR data processing
         </description>
-        <community>satim</community>
-        <yumRepo>satim</yumRepo>
+        <community>geohazards-tep</community>
+        <yumRepo>geohazards-tep</yumRepo>
         <minesarVersion>2.0</minesarVersion>
         <minesarUrl>https://github.com/skluz/minesar/releases/download/${minesarVersion}/minesar-bundle-${minesarVersion}.tar.gz</minesarUrl>
     </properties>
