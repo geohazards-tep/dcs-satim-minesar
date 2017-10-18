@@ -28,7 +28,7 @@
         <url>https://github.com/geohazards-tep/dcs-satim-minesar</url>
         <tag>HEAD</tag>
     </scm>
-    <build>
+    <!--build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -73,7 +73,7 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>
+    </build-->
     <profiles>
         <profile>
             <id>package-app</id>
@@ -95,8 +95,12 @@
                                     <goal>rpm</goal>
                                 </goals>
                                 <configuration>
+                                    <postinstallScriptlet combine.self="override">
+                                        <scriptFile>${basedir}/src/main/app-resources/scripts/postinstall.sh</scriptFile>
+                                        <fileEncoding>utf-8</fileEncoding>
+                                    </postinstallScriptlet>
                                     <requires>
-                                        <require>bash</require>
+                                        <require>curl</require>
                                     </requires>
                                 </configuration>
                             </execution>
