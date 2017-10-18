@@ -5,7 +5,7 @@ source ${ciop_job_include}
 testMode=false
 
 MINESAR_VERSION="2.0"
-MINESAR_PATH="/application/script/minesar-bundle-${MINESAR_VERSION}"
+MINESAR_PATH="/application/minesar-bundle-${MINESAR_VERSION}"
 WORKING_DIR=$(pwd)
 PRODUCTS_DIR="${TMPDIR}/products"
 
