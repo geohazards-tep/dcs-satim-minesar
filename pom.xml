@@ -96,11 +96,11 @@
                                 </goals>
                                 <configuration>
                                     <postinstallScriptlet combine.self="override">
-                                        <scriptFile>${basedir}/src/main/app-resources/scripts/postinstall.sh</scriptFile>
+                                        <scriptFile>${basedir}/src/main/app-resources/script/postinstall.sh</scriptFile>
                                         <fileEncoding>utf-8</fileEncoding>
                                     </postinstallScriptlet>
                                     <requires>
-                                        <require>curl</require>
+                                        <require>wget</require>
                                     </requires>
                                 </configuration>
                             </execution>
