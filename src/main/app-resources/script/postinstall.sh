@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 MINESAR_VERSION="2.0"
 MINESAR_URL="https://github.com/skluz/minesar/releases/download/${MINESAR_VERSION}/minesar-bundle-${MINESAR_VERSION}.tar.gz"
 TARGET_DIR="/application/"
