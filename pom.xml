@@ -12,15 +12,12 @@
     </parent>
     <description>Automatic detection and analysis of ground deformations within large areas based on the results of satellite SAR data processing
     </description>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <properties>
         <summary>MineSAR summary</summary>
-        <description>Automatic detection and analysis of ground deformations within large areas based on the results of satellite SAR data processing
-        </description>
+        <description>Automatic detection and analysis of ground deformations within large areas based on the results of satellite SAR data processing</description>
         <community>geohazards-tep</community>
         <yumRepo>geohazards-tep</yumRepo>
-        <minesarVersion>2.0</minesarVersion>
-        <minesarUrl>https://github.com/skluz/minesar/releases/download/${minesarVersion}/minesar-bundle-${minesarVersion}.tar.gz</minesarUrl>
     </properties>
     <scm>
         <connection>scm:git:ssh://git@github.com/geohazards-tep/dcs-satim-minesar</connection>
@@ -28,52 +25,6 @@
         <url>https://github.com/geohazards-tep/dcs-satim-minesar</url>
         <tag>HEAD</tag>
     </scm>
-    <!--build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>download-minesar</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <target>
-                                <echo>Removing old MineSAR dependency</echo>
-                                <delete includeEmptyDirs="true" failonerror="false">
-                                    <fileset dir="${project.basedir}/src/main/app-resources/script/minesar-bundle-${minesarVersion}"/>
-                                </delete>
-                                <delete includeEmptyDirs="true" failonerror="false">
-                                    <fileset file="${project.basedir}/target/minesar-bundle-${minesarVersion}.tar.gz"/>
-                                </delete>
-                                <echo>Downloading MineSAR ${minesarUrl}</echo>
-                                <get verbose="true" src="${minesarUrl}" dest="${project.basedir}/target/minesar-bundle-${minesarVersion}.tar.gz"/>
-                                <gunzip src="${project.basedir}/target/minesar-bundle-${minesarVersion}.tar.gz" dest="${project.basedir}/target/"/>
-                                <untar src="${project.basedir}/target/minesar-bundle-${minesarVersion}.tar" dest="${project.basedir}/src/main/app-resources/script/"/>
-                                <chmod dir="${project.basedir}/src/main/app-resources/script/minesar-bundle-${minesarVersion}" includes="**/bin/*, **/*.sh, **/application.xml, **/snaphu" perm="755"/>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>set-permissions</id>
-                        <phase>install</phase>
-                        <configuration>
-                            <target>
-                                <chmod dir="/application" includes="**/bin/*, **/*.sh, **/application.xml, **/snaphu" perm="755"/>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build-->
     <profiles>
         <profile>
             <id>package-app</id>
