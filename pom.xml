@@ -12,7 +12,7 @@
     </parent>
     <description>Automatic detection and analysis of ground deformations within large areas based on the results of satellite SAR data processing
     </description>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <properties>
         <summary>MineSAR summary</summary>
         <description>Automatic detection and analysis of ground deformations within large areas based on the results of satellite SAR data processing</description>
