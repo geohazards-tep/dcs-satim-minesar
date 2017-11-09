@@ -7,12 +7,12 @@
     <name>dcs-satim-minesar</name>
     <parent>
         <groupId>com.terradue</groupId>
-        <artifactId>dcs-bash-parent</artifactId>
-        <version>2.0.0</version>
+        <artifactId>dcs-python-parent</artifactId>
+        <version>2.1.0-docker-SNAPSHOT</version>
     </parent>
     <description>Automatic detection and analysis of ground deformations within large areas based on the results of satellite SAR data processing
     </description>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <properties>
         <summary>MineSAR summary</summary>
         <description>Automatic detection and analysis of ground deformations within large areas based on the results of satellite SAR data processing</description>
