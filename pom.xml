@@ -54,6 +54,7 @@
                                     <requires>
                                         <require>wget</require>
                 			<require>python-pip</require>
+                			<require>libgfortran</require>
 		                    	<require>python-devel</require>
                                     </requires>
                                 </configuration>
